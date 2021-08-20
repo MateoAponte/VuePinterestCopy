@@ -1,0 +1,3 @@
+.navbar {
+  @include flexCentered($justify-content: space-between);
+}
