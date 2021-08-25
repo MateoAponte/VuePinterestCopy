@@ -1,23 +1,24 @@
 <template>
 	<div id="app">
-		<nav class="navbar">
-			<section>
-				MAIN
-				<router-link to="/">Home</router-link>
-				<router-link to="/about">About</router-link>
-			</section>
-			<section>
-				Searcher
-			</section>
-			<section>
-				USER
-			</section>
-		</nav>
-		<main>
+		<nav-bar />
+		<main class="main-container">
 			<router-view />
 		</main>
 	</div>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import NavBar from "@/components/common/NavBar/navBar.vue";
+
+@Component({
+	name: "Pinterest",
+	components: {
+		NavBar,
+	},
+})
+export default class Pinterest extends Vue {}
+</script>
 
 <style lang="scss">
 #app {

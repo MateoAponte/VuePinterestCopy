@@ -1,3 +1,210 @@
 .navbar {
+  width: 100%;
+  height: 80px;
+  padding: 4px 16px;
+  position: fixed;
+  background-color: map-get($colors, colorWhite--1);
+  z-index: 25;
   @include flexCentered($justify-content: space-between);
+
+  &__items {
+    @include flexCentered($align-items: center);
+    .navbar__link {
+      @include flexCentered($align-items: center);
+      height: 48px;
+      min-width: 60px;
+      border-radius: 24px;
+      @include textLink($font-weight: map-get($text-weight, bolderWeight));
+      color: map-get($colors, colorBlack--1);
+      &:hover {
+        border-radius: 24px;
+        background-color: map-get($colors, hoverGray--1);
+      }
+      &--active {
+        background-color: map-get($colors, colorGray--1);
+      }
+      &-logo {
+        min-width: 48px;
+        cursor: pointer;
+      }
+    }
+    .router-link-active {
+      color: map-get($colors, colorWhite--1);
+      background-color: map-get($colors, colorBlack--1);
+      &:hover {
+        background-color: map-get($colors, colorBlack--1);
+      }
+    }
+    .navbar__icon {
+      width: 48px;
+      height: 48px;
+      color: map-get($colors, colorGray--2);
+      @include flexCentered();
+      cursor: pointer;
+      &:hover {
+        background-color: map-get($colors, hoverGray--1);
+        border-radius: 50%;
+      }
+      i {
+        font-size: 24px;
+      }
+      &--small {
+        width: 24px;
+        height: 24px;
+        i {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  &__logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  &__section {
+    height: 100%;
+    @include flexCentered($justify-content: flex-start);
+  }
+
+  &__searcher {
+    width: 100%;
+    height: 48px;
+    padding: 0px 16px;
+    position: relative;
+    &-input {
+      height: 100%;
+      width: 100%;
+      .searcher__input {
+        height: 100%;
+        width: 100%;
+        border: none;
+        border-radius: 24px;
+        padding: 0px 4px 0px 36px;
+        color: map-get($colors, colorGray--2);
+        background-color: map-get($colors, colorGray--1);
+        font-family: map-get($font-family, textFont);
+        font-size: map-get($text-size, mediumSize);
+        font-weight: map-get($text-weight, mediumWeight);
+        @include flexCentered($justify-content: flex-start);
+        &:active,
+        &:focus,
+        &:focus-visible {
+          border: none;
+          outline: none;
+        }
+        &:hover {
+          background-color: map-get($colors, hoverGray--2);
+        }
+      }
+      .searcher__icon {
+        position: absolute;
+        height: 100%;
+        top: 35%;
+        left: 32px;
+        color: map-get($colors, colorGray--2);
+      }
+      .searcher__input:focus ~ .searcher__icon,
+      .searcher__input:active ~ .searcher__icon {
+        display: none;
+      }
+      .searcher__input:focus,
+      .searcher__input:active {
+        padding: 0px 4px 0px 16px;
+      }
+    }
+    &-recommended {
+      z-index: 10;
+      .recommended__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: map-get($colors, colorOverlay--1);
+      }
+      .recommended__popover {
+        position: relative;
+        width: 80%;
+        height: calc(90vh - 20px);
+        padding: 18px 16px;
+        top: 80px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background-color: map-get($colors, colorWhite--1);
+        z-index: 1;
+        border-radius: 0 0 24px 24px;
+
+        .popover__section {
+          @include flexCentered(
+            $align-items: flex-start,
+            $flex-direction: column
+          );
+          .popover__title {
+            font-family: map-get($font-family, textFont);
+            font-weight: map-get($text-weight, mediumWeight);
+            padding-bottom: 8px;
+          }
+          .popover__group {
+            display: flex;
+            flex-wrap: wrap;
+          }
+          .popover__item {
+            margin-left: 6px;
+          }
+          .popover__category {
+            width: 200px;
+            height: 80px;
+            border-radius: 12px;
+            margin: 0px 0px 8px 8px;
+            cursor: pointer;
+            &:not(:nth-child(1)) {
+              margin: 0px 8px 8px 8px;
+            }
+            position: relative;
+
+            &-image {
+              width: 100%;
+              height: 100%;
+              border-radius: 12px;
+            }
+            &-overlay {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              top: 0;
+              left: 0;
+              background-color: map-get($colors, colorOverlay--2);
+              border-radius: 12px;
+              @include flexCentered();
+            }
+            &:hover {
+              .popover__category-overlay {
+                background-color: map-get($colors, colorOverlay--3);
+              }
+            }
+            &-title {
+              letter-spacing: 0.5px;
+              font-size: map-get($text-size, bigSize);
+              font-family: map-get($font-family, headingFont);
+              font-weight: map-get($text-weight, ligherWeight);
+              color: map-get($colors, colorWhite--1);
+            }
+          }
+        }
+        .popover__section:not(:nth-last-child(1)) {
+          padding-bottom: 32px;
+        }
+      }
+    }
+  }
 }

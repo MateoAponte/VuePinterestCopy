@@ -8,3 +8,15 @@
   align-items: $align-items;
   flex-direction: $flex-direction;
 }
+
+@mixin textLink(
+  $color: map-get($colors, colorBlack--1),
+  $font-size: map-get($text-size, mediumSize),
+  $font-weight: map-get($text-weight, mediumWeight)
+) {
+  font-family: map-get($font-family, headingFont);
+  color: $color;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  text-decoration: none;
+}

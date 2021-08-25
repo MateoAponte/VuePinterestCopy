@@ -13,7 +13,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { DonutModel } from "../definitions/Donut";
 import Example from "./Example.vue";
 
 @Component({
@@ -27,22 +26,12 @@ export default class HelloWorld extends Vue {
 
 	name = "Mateo";
 	lastname = "Aponte";
-	clients: Array<DonutModel> = [];
 	get fullName() {
 		return `${this.name} - ${this.lastname}`;
 	}
 
 	click(index: number) {
 		alert("Alerta pitto " + index);
-	}
-
-	mounted() {
-		this.clients.push({
-			dimension: 5,
-			radius: 5,
-			label: "Donut",
-			hasLabel: true,
-		});
 	}
 }
 </script>
