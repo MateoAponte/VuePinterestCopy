@@ -64,7 +64,7 @@ import { NavModel } from "@/definitions/NavModel";
 import PopoverSection from "./popoverSection.vue";
 import PopoverCategory from "./popoverCategory.vue";
 
-import mockNavbar from "@/helpers/mocks/navBar/navBar.js";
+import mockNavbar from "@/helpers/mocks/navBar/navBar";
 
 @Component({
 	name: "NavBar",

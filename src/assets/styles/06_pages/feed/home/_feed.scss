@@ -1,0 +1,127 @@
+.feed {
+  @include flexCentered($justify-content: flex-start);
+  position: relative;
+  z-index: 1;
+  .feed-card {
+    text-align: left;
+    height: 100%;
+    &__image {
+      width: 100%;
+      height: 60%;
+      position: relative;
+      border-radius: 16px;
+      img {
+        height: 100%;
+        width: 100%;
+        border-radius: 16px;
+      }
+      .feed-card__overlay {
+        @include baseOverlay($height: 97%, $background-color: transparent);
+        @include flexCentered(
+          $flex-direction: column,
+          $justify-content: space-between
+        );
+        border-radius: 16px;
+        padding: 12px;
+        &-header {
+          .select-boards {
+            span {
+              color: map-get($colors, colorWhite--1);
+              font-size: map-get($text-size, mediumSize);
+              font-weight: map-get($text-weight, mediumWeight);
+            }
+            i {
+              margin-left: 8px;
+              color: map-get($colors, colorWhite--1);
+              font-size: map-get($text-size, smallSize);
+            }
+          }
+        }
+        &-footer {
+          .feed-card__overlay-origin {
+            width: 60%;
+            .pinterest-button {
+              span {
+                font-weight: map-get($text-weight, lighterWeight);
+                font-size: map-get($text-size, smallSize);
+              }
+              i {
+                margin-right: 6px;
+              }
+            }
+          }
+        }
+        &-header,
+        &-footer {
+          width: 100%;
+          @include flexCentered($justify-content: space-between);
+        }
+        &-buttons {
+          .pinterest-button:not(:nth-last-child(1)) {
+            margin-right: 4px;
+          }
+        }
+        .pinterest-button {
+          cursor: pointer;
+        }
+      }
+      &:hover {
+        cursor: zoom-in;
+      }
+    }
+    &__body {
+      height: 40%;
+      padding: 8px 6px 16px;
+      margin-bottom: 4px;
+      cursor: pointer;
+      .feed-card__title {
+        width: 100%;
+        @include textLink($font-size: map-get($text-size, smallSize));
+        margin-bottom: 4px;
+      }
+      .feed-card__avatar {
+        @include flexCentered($justify-content: flex-start);
+        .avatar__image {
+          height: 32px;
+          width: 32px;
+          border-radius: 100%;
+        }
+        .avatar__name {
+          @include textLink(
+            $font-size: map-get($text-size, smallSize),
+            $font-weight: map-get($text-weight, mediumWeight),
+            $font-family: map-get($font-family, textFont)
+          );
+          padding: 0px 8px;
+        }
+      }
+      .feed-card__reactions {
+        margin-top: 4px;
+        height: 19px;
+        @include flexCentered($justify-content: flex-start);
+        .reactions__type {
+          height: 100%;
+          cursor: pointer;
+          padding: 0px 4px;
+          img {
+            height: 100%;
+            width: 20px;
+            margin-right: 4px;
+          }
+        }
+        .reactions__quantity {
+          @include textLink(
+            $font-size: map-get($text-size, mediumSize),
+            $font-weight: map-get($text-weight, lighterWeight),
+            $font-family: map-get($font-family, textFont)
+          );
+        }
+      }
+    }
+    &:hover {
+      .feed-card__overlay {
+        background-color: map-get($colors, colorOverlay--3);
+      }
+    }
+  }
+}
