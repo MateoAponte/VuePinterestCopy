@@ -12,6 +12,7 @@
 					:height="previewData(item)"
 					@udpate="item.imageData.previewHeight = $event"
 					@showBoard="showSelectBoard = $event"
+					@updatePosition="cardPosition = $event"
 				/>
 			</stack-item>
 		</stack>
@@ -33,7 +34,6 @@ import StackItem from "vue-stack-grid/src/StackItem.vue";
 
 import { MODULE_FEED } from "@/constants/modulesTypes";
 
-import { Position } from "@/definitions/common/position";
 import { FeedActionsType } from "@/constants/feed/home/actions";
 
 @Component({
@@ -50,8 +50,6 @@ export default class Feed extends Vue {
 	cardPosition = {
 		top: 0,
 		left: 0,
-		bottom: 0,
-		right: 0,
 	};
 
 	get feedData() {

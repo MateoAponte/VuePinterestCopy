@@ -1,8 +1,9 @@
 .select-board {
+  height: 500px;
+  width: 360px;
   position: absolute;
   &__popover {
-    height: 500px;
-    width: 360px;
+    height: 100%;
     background-color: map-get($colors, colorWhite--1);
     border-radius: 16px;
     box-shadow: 0 0 8px map-get($colors, colorOverlay--1);

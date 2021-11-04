@@ -1,13 +1,11 @@
 <template>
 	<div
-		v-if="!showPopover"
+		v-if="showPopover"
 		id="select-board"
 		class="select-board"
 		:style="{
-			top: position.top,
-			left: position.left,
-			bottom: position.bottom,
-			right: position.right,
+			top: popoverPosition.top + 'px',
+			left: popoverPosition.left + 'px',
 		}"
 	>
 		<div class="select-board__popover">
@@ -62,6 +60,9 @@ import { Position } from "@/definitions/common/position";
 export default class SelectBoard extends Vue {
 	popoverPosition = {} as Position;
 	showPopover = false;
+	boards = Array<BoardModel>();
+	suggestion = Array<BoardModel>();
+	popover = false;
 
 	@Prop() suggested_board!: string;
 	@Prop() position!: Position;
@@ -72,9 +73,37 @@ export default class SelectBoard extends Vue {
 		this.showPopover = value;
 	}
 
-	boards = Array<BoardModel>();
-	suggestion = Array<BoardModel>();
-	popover = false;
+	@Watch("position", { deep: true, immediate: true })
+	onPositionChanged(value: Position) {
+		this.popoverPosition = this.calculatePosition(value);
+	}
+
+	calculatePosition(value: Position) {
+		const element = document.getElementById("select-board");
+		const selectBoard = document.querySelectorAll<HTMLElement>(".select-boards")[0];
+		const height = element?.offsetHeight || 0;
+		const width = element?.offsetWidth || 0;
+		let realTop = Number(value.top) - 50;
+		let realLeft = Number(value.left) - width / 2;
+
+		const windowHeight = window.innerHeight + window.pageYOffset;
+
+		const elementTop = Number(value.top) + height;
+		const halfElementTop = Number(value.top) + height / 2;
+		if (elementTop > windowHeight) {
+			if (halfElementTop > windowHeight) {
+				realTop = Number(value.top) - height - selectBoard?.offsetHeight - 80;
+				realLeft = Number(value.left) - width / 2;
+			} else {
+				realTop = Number(value.top) - height / 2 - 50;
+				realLeft = Number(value.left) - width - selectBoard?.offsetWidth + 20;
+			}
+		}
+		if (realLeft < 0) {
+			realLeft = Number(value.left) + 0;
+		}
+		return { top: String(realTop), left: String(realLeft) };
+	}
 
 	mounted() {
 		this.boards.push(
@@ -155,6 +184,15 @@ export default class SelectBoard extends Vue {
 				tags: [],
 			},
 		);
+		document.addEventListener("click", (event: Event) => {
+			if (this.show) {
+				const element = document.getElementById("select-board");
+				const includeInPath = event.path.find(
+					(eventElement: HTMLElement) => eventElement === element,
+				);
+				this.$emit("hideBoard", !!includeInPath);
+			}
+		});
 	}
 }
 </script>

@@ -9,7 +9,7 @@
 			<img :src="item.path" :alt="item.title" />
 			<div v-if="showOverlay" class="feed-card__overlay">
 				<div class="feed-card__overlay-header">
-					<div class="select-boards" @click="showSelectBoard()">
+					<div :id="randomId" class="select-boards" @click="showSelectBoard($event)">
 						<span>Board</span>
 						<i class="fas fa-chevron-down"></i>
 					</div>
@@ -74,8 +74,13 @@ export default class FeedCard extends Vue {
 	@Prop() item!: FeedCardModel;
 
 	showOverlay = false;
+	randomId = Math.floor(Math.random() * (2000 - 1) + 2000);
 
 	showSelectBoard() {
+		const target = document.getElementById(String(this.randomId)) || new HTMLElement();
+		var topPos = target.getBoundingClientRect().top + window.pageYOffset;
+		var leftPos = target.getBoundingClientRect().left;
+		this.$emit("updatePosition", { top: topPos, left: leftPos });
 		this.$emit("showBoard", true);
 	}
 
