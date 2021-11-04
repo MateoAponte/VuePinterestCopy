@@ -11,9 +11,15 @@
 					:item="item"
 					:height="previewData(item)"
 					@udpate="item.imageData.previewHeight = $event"
+					@showBoard="showSelectBoard = $event"
 				/>
 			</stack-item>
 		</stack>
+		<SelectBoard
+			:show="showSelectBoard"
+			:position="cardPosition"
+			@hideBoard="showSelectBoard = $event"
+		/>
 	</div>
 </template>
 
@@ -21,11 +27,13 @@
 import { Component, Vue } from "vue-property-decorator";
 
 import FeedCard from "./feedCard.vue";
+import SelectBoard from "./selectBoard.vue";
 import Stack from "vue-stack-grid/src/Stack.vue";
 import StackItem from "vue-stack-grid/src/StackItem.vue";
 
 import { MODULE_FEED } from "@/constants/modulesTypes";
 
+import { Position } from "@/definitions/common/position";
 import { FeedActionsType } from "@/constants/feed/home/actions";
 
 @Component({
@@ -34,9 +42,18 @@ import { FeedActionsType } from "@/constants/feed/home/actions";
 		FeedCard,
 		Stack,
 		StackItem,
+		SelectBoard,
 	},
 })
 export default class Feed extends Vue {
+	showSelectBoard = false;
+	cardPosition = {
+		top: 0,
+		left: 0,
+		bottom: 0,
+		right: 0,
+	};
+
 	get feedData() {
 		return this.$store.state[MODULE_FEED].feed_data;
 	}
@@ -49,7 +66,6 @@ export default class Feed extends Vue {
 	}
 
 	mounted() {
-		this.$store.dispatch(FeedActionsType.FETCH_FEED);
 		this.$store.dispatch(FeedActionsType.FETCH_FEED);
 	}
 }

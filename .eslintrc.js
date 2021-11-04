@@ -5,7 +5,11 @@ module.exports = {
 	},
 	parser: "vue-eslint-parser",
 	parserOptions: {
-		parser: "@typescript-eslint/parser",
+		parser: require.resolve("@typescript-eslint/parser"),
+		extraFileExtensions: [".vue"],
+		ecmaFeatures: {
+			jsx: true,
+		},
 	},
 	plugins: ["prettier", "@typescript-eslint", "vue", "prettier"],
 	extends: [
@@ -19,5 +23,6 @@ module.exports = {
 		"no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
 		"no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
 		"@typescript-eslint/explicit-module-boundary-types": "off",
+		indent: [2, "tab"],
 	},
 };

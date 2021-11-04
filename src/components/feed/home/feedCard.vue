@@ -9,7 +9,7 @@
 			<img :src="item.path" :alt="item.title" />
 			<div v-if="showOverlay" class="feed-card__overlay">
 				<div class="feed-card__overlay-header">
-					<div class="select-boards">
+					<div class="select-boards" @click="showSelectBoard()">
 						<span>Board</span>
 						<i class="fas fa-chevron-down"></i>
 					</div>
@@ -74,6 +74,10 @@ export default class FeedCard extends Vue {
 	@Prop() item!: FeedCardModel;
 
 	showOverlay = false;
+
+	showSelectBoard() {
+		this.$emit("showBoard", true);
+	}
 
 	@Watch("item", { deep: true })
 	onItemChanged(value: FeedCardModel) {

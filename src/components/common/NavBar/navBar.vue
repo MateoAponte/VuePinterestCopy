@@ -5,8 +5,8 @@
 				<div class="navbar__link navbar__link-logo">
 					<img class="navbar__logo" src="@/assets/img/logo.svg" alt="Logo" />
 				</div>
-				<router-link class="navbar__link" to="/">Home</router-link>
-				<router-link class="navbar__link" to="/about">About</router-link>
+				<router-link class="navbar__link" to="/">Inicio</router-link>
+				<router-link class="navbar__link" to="/about">Hoy</router-link>
 			</section>
 			<section class="navbar__searcher">
 				<div id="navbar__searcher" class="navbar__searcher-input">
@@ -16,7 +16,9 @@
 			</section>
 			<section class="navbar__items">
 				<a class="navbar__icon">
-					<i class="fas fa-bell"></i>
+					<i class="fas fa-bell">
+						<span class="navbar__notifications">1</span>
+					</i>
 				</a>
 				<a class="navbar__icon">
 					<i class="fas fa-comment-dots"></i>
@@ -58,7 +60,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Vue, Component } from "vue-property-decorator";
 import { NavModel } from "@/definitions/NavModel";
 
 import PopoverSection from "./popoverSection.vue";

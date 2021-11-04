@@ -38,6 +38,7 @@
     .navbar__icon {
       width: 48px;
       height: 48px;
+      position: relative;
       color: map-get($colors, colorGray--2);
       @include flexCentered();
       cursor: pointer;
@@ -55,6 +56,21 @@
           font-size: 12px;
         }
       }
+    }
+    .navbar__notifications {
+      border-radius: 100%;
+      background-color: map-get($colors, hoverRed--1);
+      padding: 1px 6px;
+      height: 18px;
+      min-width: 18px;
+      @include flexCentered();
+      position: absolute;
+      right: 3px;
+      top: 6px;
+      font-weight: map-get($text-weight, mediumWeight);
+      font-size: map-get($text-size, smallSize);
+      font-family: map-get($font-family, textFont);
+      color: map-get($colors, colorWhite--1);
     }
   }
 
