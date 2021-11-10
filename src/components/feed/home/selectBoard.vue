@@ -184,8 +184,12 @@ export default class SelectBoard extends Vue {
 				tags: [],
 			},
 		);
-		document.addEventListener("click", (event: Event) => {
-			if (this.show) {
+		document.addEventListener("click", (event: MouseEvent) => {
+			let targetClass;
+			event.target?.className === "select-boards" && (targetClass = event.target?.className);
+			event.target?.parentElement.className === "select-boards" &&
+				(targetClass = event.target?.parentElement.className);
+			if (this.show && targetClass !== "select-boards") {
 				const element = document.getElementById("select-board");
 				const includeInPath = event.path.find(
 					(eventElement: HTMLElement) => eventElement === element,

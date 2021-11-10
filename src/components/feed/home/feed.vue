@@ -1,6 +1,7 @@
 <template>
 	<div class="feed">
 		<stack
+			v-if="feedData.length > 0"
 			:column-min-width="calcWidth"
 			:gutter-width="15"
 			:gutter-height="15"
@@ -16,6 +17,7 @@
 				/>
 			</stack-item>
 		</stack>
+		<loader v-else />
 		<SelectBoard
 			:show="showSelectBoard"
 			:position="cardPosition"
@@ -29,6 +31,7 @@ import { Component, Vue } from "vue-property-decorator";
 
 import FeedCard from "./feedCard.vue";
 import SelectBoard from "./selectBoard.vue";
+import Loader from "./loader.vue";
 import Stack from "vue-stack-grid/src/Stack.vue";
 import StackItem from "vue-stack-grid/src/StackItem.vue";
 
@@ -42,6 +45,7 @@ import { FeedActionsType } from "@/constants/feed/home/actions";
 		FeedCard,
 		Stack,
 		StackItem,
+		Loader,
 		SelectBoard,
 	},
 })
