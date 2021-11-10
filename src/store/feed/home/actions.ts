@@ -9,15 +9,20 @@ import { FeedMutationsType } from "@/constants/feed/home/mutations";
 
 import { FeedCardModel } from "@/definitions/feed/FeedCardModel";
 import { FetchResponseModel } from "@/definitions/feed/FetchResponseModel";
+import { Pagination } from "@/definitions/feed/PaginationData";
 
 export const actions: ActionTree<FeedState, RootState> = {
-	[FeedActionsType.FETCH_FEED]({ dispatch }) {
-		FeedApi.getFeedData().then((response) => {
+	[FeedActionsType.FETCH_FEED]({ dispatch }, payload: Pagination) {
+		FeedApi.getFeedData(payload).then((response) => {
 			dispatch(FeedActionsType.TRANSFORM_FETCH_DATA, response.data.hits);
 		});
 	},
-	[FeedActionsType.TRANSFORM_FETCH_DATA]({ commit }, payload) {
+	[FeedActionsType.UPDATE_PAGINATION_DATA]({ commit }, payload: Pagination) {
+		commit(FeedMutationsType.SET_PAGINATION_DATA, payload);
+	},
+	[FeedActionsType.TRANSFORM_FETCH_DATA]({ commit, state }, payload) {
 		const feedCardList = Array<FeedCardModel>();
+		const defaultData = state.feed_data;
 		payload.forEach((item: FetchResponseModel) => {
 			const feedItem = {} as FeedCardModel;
 			const randomNumber = Math.floor(Math.random() * (2 - 0) + 0);
@@ -42,6 +47,7 @@ export const actions: ActionTree<FeedState, RootState> = {
 			feedItem.id = item.id;
 			feedCardList.push(feedItem);
 		});
-		commit(FeedMutationsType.SET_FEED_DATA, feedCardList);
+		defaultData.push(...feedCardList);
+		commit(FeedMutationsType.SET_FEED_DATA, defaultData);
 	},
 };

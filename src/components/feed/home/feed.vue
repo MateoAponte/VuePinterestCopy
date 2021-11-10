@@ -60,6 +60,10 @@ export default class Feed extends Vue {
 		return this.$store.state[MODULE_FEED].feed_data;
 	}
 
+	get paginationData() {
+		return this.$store.state[MODULE_FEED].pagination_data;
+	}
+
 	previewData(item: any) {
 		return item.imageData.previewHeight;
 	}
@@ -68,7 +72,21 @@ export default class Feed extends Vue {
 	}
 
 	mounted() {
-		this.$store.dispatch(FeedActionsType.FETCH_FEED);
+		this.$store.dispatch(FeedActionsType.FETCH_FEED, this.paginationData);
+		document.addEventListener("scroll", () => {
+			const feedContainer = document.querySelector(".feed") || Element;
+			const feedHeight = feedContainer.offsetHeight;
+			const distanceTop = window.innerHeight + window.pageYOffset;
+			console.log(distanceTop >= feedHeight - 200);
+			if (distanceTop >= feedHeight - 200) {
+				const pagination = {
+					...this.paginationData,
+				};
+				pagination.page_number += 1;
+				this.$store.dispatch(FeedActionsType.UPDATE_PAGINATION_DATA, pagination);
+				this.$store.dispatch(FeedActionsType.FETCH_FEED, pagination);
+			}
+		});
 	}
 }
 </script>

@@ -1,4 +1,5 @@
 export const FeedActionsType = {
-	FETCH_FEED: "fetchFeedData",
-	TRANSFORM_FETCH_DATA: "transformFetchData",
+	FETCH_FEED: "@actions/fetchFeedData",
+	UPDATE_PAGINATION_DATA: "@actions/updatePaginationData",
+	TRANSFORM_FETCH_DATA: "@actions/transformFetchData",
 };
