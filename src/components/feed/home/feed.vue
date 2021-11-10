@@ -77,7 +77,7 @@ export default class Feed extends Vue {
 			const feedContainer = document.querySelector(".feed") || Element;
 			const feedHeight = feedContainer.offsetHeight;
 			const distanceTop = window.innerHeight + window.pageYOffset;
-			console.log(distanceTop >= feedHeight - 200);
+			console.log(distanceTop >= feedHeight - 400);
 			if (distanceTop >= feedHeight - 200) {
 				const pagination = {
 					...this.paginationData,
