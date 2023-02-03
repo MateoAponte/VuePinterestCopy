@@ -13,6 +13,8 @@
 					:height="previewData(item)"
 					@udpate="item.imageData.previewHeight = $event"
 					@showBoard="showSelectBoard = $event"
+					@showMoreInfo="showMoreInfoBoard = $event"
+					@showShared="showSharedBoard = $event"
 					@updatePosition="cardPosition = $event"
 				/>
 			</stack-item>
@@ -23,6 +25,16 @@
 			:position="cardPosition"
 			@hideBoard="showSelectBoard = $event"
 		/>
+		<MoreInfoBoard
+			:show="showMoreInfoBoard"
+			:position="cardPosition"
+			@hideMoreInfo="showMoreInfoBoard = $event"
+		/>
+		<SharedBoard
+			:show="showSharedBoard"
+			:position="cardPosition"
+			@hideShared="showSharedBoard = $event"
+		/>
 	</div>
 </template>
 
@@ -31,6 +43,8 @@ import { Component, Vue } from "vue-property-decorator";
 
 import FeedCard from "./feedCard.vue";
 import SelectBoard from "./selectBoard.vue";
+import MoreInfoBoard from "./moreInfoBoard.vue";
+import SharedBoard from "./sharedBoard.vue";
 import Loader from "./loader.vue";
 import Stack from "vue-stack-grid/src/Stack.vue";
 import StackItem from "vue-stack-grid/src/StackItem.vue";
@@ -47,10 +61,14 @@ import { FeedActionsType } from "@/constants/feed/home/actions";
 		StackItem,
 		Loader,
 		SelectBoard,
+		MoreInfoBoard,
+		SharedBoard,
 	},
 })
 export default class Feed extends Vue {
 	showSelectBoard = false;
+	showMoreInfoBoard = false;
+	showSharedBoard = false;
 	cardPosition = {
 		top: 0,
 		left: 0,
@@ -77,8 +95,7 @@ export default class Feed extends Vue {
 			const feedContainer = document.querySelector(".feed") || Element;
 			const feedHeight = feedContainer.offsetHeight;
 			const distanceTop = window.innerHeight + window.pageYOffset;
-			console.log(distanceTop >= feedHeight - 400);
-			if (distanceTop >= feedHeight - 200) {
+			if (distanceTop >= feedHeight - 300) {
 				const pagination = {
 					...this.paginationData,
 				};

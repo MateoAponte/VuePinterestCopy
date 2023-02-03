@@ -127,4 +127,95 @@
       }
     }
   }
+
+  .more-info-board {
+    width: 360px;
+    max-height: 160px;
+    .select-board__popover-body {
+      position: relative;
+      padding: 8px;
+      & section:nth-child(1) {
+        padding: 8px 0px;
+      }
+    }
+    .more-info__title {
+      font-weight: map-get($text-weight, mediumWeight);
+      font-size: map-get($text-size, mediumSize);
+      font-family: map-get($font-family, textFont);
+    }
+    .more-info__item {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      font-weight: map-get($text-weight, mediumWeight);
+      font-size: map-get($text-size, bigSize);
+      font-family: map-get($font-family, headingFont);
+      padding: 8px;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
+        outline: 0;
+        background-color: map-get($colors, colorGray--3);
+      }
+    }
+  }
+  .shared-board {
+    width: 370px;
+    height: auto;
+    max-height: 400px;
+    .select-board__popover-body {
+      position: relative;
+      padding: 4px 12px;
+      height: 100%;
+      min-height: 100%;
+      max-height: 400px;
+    }
+
+    .shared__section {
+      min-height: 150px;
+      &:nth-last-child(1) {
+        margin-bottom: 20px;
+      }
+      &-row {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .shared__icon {
+        width: 75px;
+        height: 75px;
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+      .shared__img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-bottom: 8px;
+      }
+      .shared__label {
+        text-align: center;
+        font-weight: map-get($text-weight, mediumWeight);
+        font-size: map-get($text-size, smallSize);
+        font-family: map-get($font-family, textFont);
+      }
+      .shared__title {
+        text-align: center;
+        font-weight: map-get($text-weight, ligherWeight);
+        font-size: map-get($text-size, mediumSize);
+        font-family: map-get($font-family, headingFont);
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .shared__divider {
+      margin: 4px 12px;
+      hr {
+        border-top: 1px solid #cdcdcd;
+      }
+    }
+  }
 }
