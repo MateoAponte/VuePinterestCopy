@@ -1,27 +1,27 @@
 export const SHARED_MEDIA = [
 	{
-		img: "",
+		icon: "fa-brands fa-whatsapp",
 		label: "Whatsapp",
-		urlAction: "",
+		urlAction: "https://web.whatsapp.com/",
 	},
 	{
-		img: "",
+		icon: "fa-brands fa-facebook-messenger",
 		label: "Messenger",
-		urlAction: "",
+		urlAction: "https://www.facebook.com/meymeyapss/photos",
 	},
 	{
-		img: "",
+		icon: "fa-brands fa-facebook",
 		label: "Facebook",
-		urlAction: "",
+		urlAction: "https://www.facebook.com/meymeyapss/photos",
 	},
 	{
-		img: "",
+		icon: "fa-brands fa-twitter",
 		label: "Twitter",
-		urlAction: "",
+		urlAction: "https://twitter.com/?lang=es",
 	},
 	{
-		img: "",
+		icon: "fa-solid fa-envelope",
 		label: "Correo Electrónico",
-		urlAction: "",
+		urlAction: "https://outlook.live.com/",
 	},
 ];

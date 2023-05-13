@@ -7,7 +7,7 @@
 	>
 		<section class="feed-card__image">
 			<img :src="item.path" :alt="item.title" />
-			<div v-if="showOverlay" class="feed-card__overlay">
+			<div v-if="showOverlay || isActive" class="feed-card__overlay">
 				<div class="feed-card__overlay-header">
 					<div :id="randomId" class="select-boards" @click="showSelectBoard($event)">
 						<span>Board</span>
@@ -82,14 +82,21 @@ import { events } from "@/constants/feed/home/dictionary";
 })
 export default class FeedCard extends Vue {
 	@Prop() item!: FeedCardModel;
+	@Prop() index!: number;
 
 	showOverlay = false;
+	isActive = false;
 	randomId = Math.floor(Math.random() * (2000 - 1) + 2000);
+
+	showActive() {
+		this.isActive = true;
+	}
 
 	showSelectBoard() {
 		const target = document.getElementById(String(this.randomId)) || new HTMLElement();
 		var topPos = target.getBoundingClientRect().top + window.pageYOffset;
 		var leftPos = target.getBoundingClientRect().left;
+		this.showActive();
 		this.$emit("updatePosition", { top: topPos, left: leftPos });
 		this.$emit(events.SHOW_BOARD, true);
 	}
@@ -98,6 +105,7 @@ export default class FeedCard extends Vue {
 		const target = document.getElementById(String(this.randomId)) || new HTMLElement();
 		var topPos = target.getBoundingClientRect().top + window.pageYOffset;
 		var leftPos = target.getBoundingClientRect().left;
+		this.showActive();
 		this.$emit("updatePosition", { top: topPos, left: leftPos });
 		this.$emit(events.SHOW_MORE_INFO, true);
 	}
@@ -106,6 +114,7 @@ export default class FeedCard extends Vue {
 		const target = document.getElementById(String(this.randomId)) || new HTMLElement();
 		var topPos = target.getBoundingClientRect().top + window.pageYOffset;
 		var leftPos = target.getBoundingClientRect().left;
+		this.showActive();
 		this.$emit("updatePosition", { top: topPos, left: leftPos });
 		this.$emit(events.SHOW_SHARED, true);
 	}
@@ -122,7 +131,19 @@ export default class FeedCard extends Vue {
 	redirectPage(page: string) {
 		window.open("https://www." + page, "_blank");
 	}
+
+	mounted() {
+		document.addEventListener("click", (event: MouseEvent) => {
+			const element = document.querySelectorAll(".feed-card")[this.index];
+
+			const includeInPath = event.composedPath()?.find((eventElement: HTMLElement) => {
+				return eventElement === element;
+			});
+
+			if (includeInPath !== element) {
+				this.isActive = false;
+			}
+		});
+	}
 }
 </script>
-
-<style></style>

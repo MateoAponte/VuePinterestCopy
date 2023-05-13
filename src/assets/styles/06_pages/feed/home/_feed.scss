@@ -83,6 +83,7 @@
         margin-bottom: 4px;
       }
       .feed-card__avatar {
+        margin-top: 2px;
         @include flexCentered($justify-content: flex-start);
         .avatar__image {
           height: 32px;
@@ -187,12 +188,23 @@
         height: 75px;
         margin-bottom: 20px;
         cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
       .shared__img {
         width: 48px;
         height: 48px;
         border-radius: 50%;
         margin-bottom: 8px;
+
+        span {
+          text-align: center;
+          i {
+            font-size: 40px;
+          }
+        }
       }
       .shared__label {
         text-align: center;

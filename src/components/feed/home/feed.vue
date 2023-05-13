@@ -7,9 +7,10 @@
 			:gutter-height="15"
 			monitor-images-loaded
 		>
-			<stack-item v-for="item in feedData" :key="item.id">
+			<stack-item v-for="(item, index) in feedData" :key="item.id">
 				<feed-card
 					:item="item"
+					:index="index"
 					:height="previewData(item)"
 					@udpate="item.imageData.previewHeight = $event"
 					@showBoard="showSelectBoard = $event"

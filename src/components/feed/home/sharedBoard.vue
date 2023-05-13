@@ -11,8 +11,17 @@
 			<section class="shared__section">
 				<span class="shared__title">Compartir</span>
 				<div class="shared__section-row">
-					<div v-for="(item, index) in shared" :key="index" class="shared__icon">
-						<img :src="item.icon" class="shared__img" />
+					<div
+						v-for="(item, index) in shared"
+						:key="index"
+						class="shared__icon"
+						@click="window.open(item.urlAction, '_blank')"
+					>
+						<div class="shared__img">
+							<span>
+								<i :class="item.icon"></i>
+							</span>
+						</div>
 						<span class="shared__label">
 							{{ item.label }}
 						</span>
@@ -26,7 +35,7 @@
 				<span class="shared__title">Enviar en Pinterest</span>
 				<div class="shared__section-row">
 					<div v-for="(item, index) in friends" :key="index" class="shared__icon">
-						<img :src="item.icon" class="shared__img" />
+						<img :src="item.img" class="shared__img" />
 						<span class="shared__label">
 							{{ item.label }}
 						</span>

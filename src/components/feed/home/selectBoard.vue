@@ -47,7 +47,7 @@ import { SUGGESTIONS } from "@/constants/back/suggestions";
 import { BOARDS } from "@/constants/back/boards";
 
 import { recalculateSelectBoard } from "@/helpers/mixins/calculatePosition";
-import { events, popoverTypes } from "@/constants/feed/home/dictionary";
+import { events } from "@/constants/feed/home/dictionary";
 
 @Component({
 	name: "SelectBoard",

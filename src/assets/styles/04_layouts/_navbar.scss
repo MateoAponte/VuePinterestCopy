@@ -14,6 +14,11 @@
       height: 48px;
       min-width: 60px;
       border-radius: 24px;
+      margin: 0px 2px;
+      i {
+        margin-left: 6px;
+        font-weight: 800;
+      }
       @include textLink($font-weight: map-get($text-weight, bolderWeight));
       color: map-get($colors, colorBlack--1);
       &:hover {
@@ -25,6 +30,11 @@
       }
       &-logo {
         min-width: 48px;
+        cursor: pointer;
+      }
+
+      &.navbar__popover {
+        min-width: 80px;
         cursor: pointer;
       }
     }
@@ -214,6 +224,268 @@
           padding-bottom: 32px;
         }
       }
+    }
+  }
+
+  .notification__popover,
+  .inbox__popover {
+    height: calc(100vh - 100px);
+    width: 375px;
+    position: absolute;
+
+    .select-board__popover {
+      padding-bottom: 89px;
+    }
+    .select-board__popover-body {
+      max-height: 100%;
+    }
+  }
+  .notifications-title,
+  .inbox-header__content {
+    font-size: map-get($text-size, mediumSize);
+    font-weight: map-get($text-weight, mediumWeight);
+    color: map-get($colors, colorBlack--1);
+    font-family: map-get($font-family, headingFont);
+    position: sticky;
+    background: #fff;
+    padding: 23px 0px;
+    top: 0;
+    left: 0;
+  }
+  .notifications {
+    padding: 0px 8px;
+    .notification__item {
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+      text-align: left;
+      padding: 8px;
+      border-radius: 12px;
+      &:hover {
+        background: map-get($colors, colorGray--1);
+      }
+
+      span {
+        margin-bottom: 4px;
+      }
+      .notification__image {
+        display: flex;
+        margin-bottom: 24px;
+        border-radius: 24px;
+        overflow: hidden;
+        img {
+          width: calc(100% / 3);
+          height: 170px;
+          object-fit: cover;
+          &:not(:last-child) {
+            margin-right: 1px;
+          }
+        }
+      }
+    }
+  }
+  .inbox {
+    padding: 0px 8px;
+
+    .inbox__messages,
+    .inbox__suggestions {
+      text-align: left;
+    }
+    &__section-title {
+      padding: 12px 16px;
+      display: inline-block;
+    }
+
+    &__new-message {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 8px;
+      margin: 0px 8px 8px;
+      border-radius: 14px;
+      .inbox__new-message-icon {
+        border-radius: 50%;
+        background: map-get($colors, colorRed--1);
+        height: 48px;
+        width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-right: 8px;
+        i {
+          color: white;
+          font-size: 18px;
+        }
+      }
+      .inbox__new-message-text {
+        font-size: map-get($text-size, mediumSize);
+        font-weight: map-get($text-weight, mediumWeight);
+        color: map-get($colors, colorBlack--1);
+        font-family: map-get($font-family, headingFont);
+      }
+      &:hover {
+        background: map-get($colors, colorGray--1);
+      }
+    }
+
+    &__image {
+      height: 48px;
+      min-width: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-left: 8px;
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &__info {
+      margin-left: 8px;
+      span {
+        display: block;
+      }
+      .inbox__name {
+        font-size: map-get($text-size, mediumSize);
+        font-family: map-get($font-family, headingFont);
+        font-weight: map-get($text-weight, ligherWeight);
+        color: map-get($colors, colorBlack--1);
+      }
+      .inbox__message {
+        margin-top: 4px;
+      }
+      .inbox__isFollowed {
+        margin-top: 4px;
+        font-size: map-get($text-size, smallSize);
+        font-family: map-get($font-family, textFont);
+        font-weight: map-get($text-weight, ligherWeight);
+      }
+    }
+
+    &__row {
+      display: flex;
+      align-items: center;
+      margin: 0px 8px;
+      height: 64px;
+      border-radius: 18px;
+      &:hover {
+        background: map-get($colors, colorGray--1);
+      }
+    }
+  }
+
+  .user__popover {
+    .select-board {
+      height: auto;
+    }
+    .select-board__popover-body {
+      max-height: unset;
+    }
+    .user__container {
+      padding: 12px 8px;
+    }
+    .user__option {
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: map-get($text-size, mediumSize);
+      font-weight: map-get($text-weight, ligherWeight);
+      color: map-get($colors, colorBlack--1);
+      font-family: map-get($font-family, headingFont);
+      display: flex;
+      justify-content: space-between;
+      &:hover {
+        background: map-get($colors, colorGray--1);
+        box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
+      }
+
+      i {
+        font-size: 16px;
+      }
+    }
+    .user__info {
+      display: flex;
+      justify-content: flex-start;
+
+      .user__image {
+        height: 60px;
+        min-width: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 8px;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .user__data {
+        justify-self: flex-start;
+        align-self: flex-start;
+        .user__name {
+          font-size: map-get($text-size, mediumSize);
+          font-weight: map-get($text-weight, mediumWeight);
+          color: map-get($colors, colorBlack--1);
+          font-family: map-get($font-family, headingFont);
+          display: inline-block;
+        }
+        .user__account-type {
+          margin-top: 2px;
+          display: block;
+          font-size: map-get($text-size, mediumSize);
+          font-weight: map-get($text-weight, ligherWeight);
+          color: map-get($colors, colorBlack--1);
+          font-family: map-get($font-family, textFont);
+        }
+        .user__email {
+          margin-top: 2px;
+          display: block;
+          font-size: map-get($text-size, mediumSize);
+          font-weight: map-get($text-weight, ligherWeight);
+          color: map-get($colors, colorBlack--1);
+          font-family: map-get($font-family, textFont);
+        }
+      }
+    }
+    .user__section {
+      text-align: left;
+      &:not(:first-child) {
+        margin-top: 16px;
+      }
+      & > span {
+        display: inline-block;
+        letter-spacing: 0.5px;
+        padding: 8px;
+        font-size: 11px;
+        margin-left: 8px;
+        font-weight: map-get($text-weight, mediumWeight);
+        color: map-get($colors, colorBlack--1);
+        font-family: map-get($font-family, textFont);
+      }
+    }
+  }
+
+  .navbar__popover {
+    .select-board {
+      height: auto;
+      width: 182px;
+    }
+    .create__option {
+      padding: 8px 8px;
+      border-radius: 4px;
+      font-weight: map-get($text-weight, ligherWeight);
+      color: map-get($colors, colorBlack--1);
+      font-family: map-get($font-family, headingFont);
+      &:hover {
+        background: map-get($colors, colorGray--1);
+        box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
+      }
+    }
+    .create__container {
+      padding: 8px;
     }
   }
 }

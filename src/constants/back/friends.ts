@@ -1,21 +1,21 @@
 export const FRIENDS = [
 	{
-		img: "",
+		img: "https://randomuser.me/api/portraits/men/11.jpg",
 		label: "Natalia Pardo",
 		urlAction: "",
 	},
 	{
-		img: "",
+		img: "https://randomuser.me/api/portraits/men/78.jpg",
 		label: "Manuel Cardenas",
 		urlAction: "",
 	},
 	{
-		img: "",
+		img: "https://randomuser.me/api/portraits/men/42.jpg",
 		label: "Pepito Perez",
 		urlAction: "",
 	},
 	{
-		img: "",
+		img: "https://randomuser.me/api/portraits/men/55.jpg",
 		label: "Juan Carlos",
 		urlAction: "",
 	},
