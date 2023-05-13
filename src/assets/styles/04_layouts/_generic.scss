@@ -1,0 +1,18 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.main-container {
+  position: relative;
+  top: 80px;
+}
+
+.container {
+  padding: 0px 75px;
+}
+
+.vue-waterfall {
+  overflow: visible !important;
+}

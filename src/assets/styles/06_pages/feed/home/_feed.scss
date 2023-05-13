@@ -1,0 +1,233 @@
+.feed {
+  @include flexCentered($justify-content: flex-start);
+  position: relative;
+  z-index: 1;
+  .feed-card {
+    text-align: left;
+    height: 100%;
+    &__image {
+      width: 100%;
+      height: 60%;
+      position: relative;
+      border-radius: 16px;
+      img {
+        height: 100%;
+        width: 100%;
+        border-radius: 16px;
+      }
+      .feed-card__overlay {
+        @include baseOverlay($height: 97%, $background-color: transparent);
+        @include flexCentered(
+          $flex-direction: column,
+          $justify-content: space-between
+        );
+        border-radius: 16px;
+        padding: 12px;
+        &-header {
+          .select-boards {
+            width: 50%;
+            cursor: pointer;
+            height: 20px;
+            span {
+              color: map-get($colors, colorWhite--1);
+              font-size: map-get($text-size, mediumSize);
+              font-weight: map-get($text-weight, mediumWeight);
+            }
+            i {
+              margin-left: 8px;
+              color: map-get($colors, colorWhite--1);
+              font-size: map-get($text-size, smallSize);
+            }
+          }
+        }
+        &-footer {
+          .feed-card__overlay-origin {
+            width: 60%;
+            .pinterest-button {
+              span {
+                font-weight: map-get($text-weight, lighterWeight);
+                font-size: map-get($text-size, smallSize);
+              }
+              i {
+                margin-right: 6px;
+              }
+            }
+          }
+        }
+        &-header,
+        &-footer {
+          width: 100%;
+          @include flexCentered($justify-content: space-between);
+        }
+        &-buttons {
+          .pinterest-button:not(:nth-last-child(1)) {
+            margin-right: 4px;
+          }
+        }
+        .pinterest-button {
+          cursor: pointer;
+        }
+      }
+      &:hover {
+        cursor: zoom-in;
+      }
+    }
+    &__body {
+      height: 40%;
+      padding: 8px 6px 16px;
+      margin-bottom: 4px;
+      cursor: pointer;
+      .feed-card__title {
+        width: 100%;
+        @include textLink($font-size: map-get($text-size, smallSize));
+        margin-bottom: 4px;
+      }
+      .feed-card__avatar {
+        margin-top: 2px;
+        @include flexCentered($justify-content: flex-start);
+        .avatar__image {
+          height: 32px;
+          width: 32px;
+          border-radius: 100%;
+        }
+        .avatar__name {
+          @include textLink(
+            $font-size: map-get($text-size, smallSize),
+            $font-weight: map-get($text-weight, mediumWeight),
+            $font-family: map-get($font-family, textFont)
+          );
+          padding: 0px 8px;
+        }
+      }
+      .feed-card__reactions {
+        margin-top: 4px;
+        height: 19px;
+        @include flexCentered($justify-content: flex-start);
+        .reactions__type {
+          height: 100%;
+          cursor: pointer;
+          padding: 0px 4px;
+          img {
+            height: 100%;
+            width: 20px;
+            margin-right: 4px;
+          }
+        }
+        .reactions__quantity {
+          @include textLink(
+            $font-size: map-get($text-size, mediumSize),
+            $font-weight: map-get($text-weight, lighterWeight),
+            $font-family: map-get($font-family, textFont)
+          );
+        }
+      }
+    }
+    &:hover {
+      .feed-card__overlay {
+        background-color: map-get($colors, colorOverlay--3);
+      }
+    }
+  }
+
+  .more-info-board {
+    width: 360px;
+    max-height: 160px;
+    .select-board__popover-body {
+      position: relative;
+      padding: 8px;
+      & section:nth-child(1) {
+        padding: 8px 0px;
+      }
+    }
+    .more-info__title {
+      font-weight: map-get($text-weight, mediumWeight);
+      font-size: map-get($text-size, mediumSize);
+      font-family: map-get($font-family, textFont);
+    }
+    .more-info__item {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      font-weight: map-get($text-weight, mediumWeight);
+      font-size: map-get($text-size, bigSize);
+      font-family: map-get($font-family, headingFont);
+      padding: 8px;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 0 0 4px rgba(0, 132, 255, 0.5);
+        outline: 0;
+        background-color: map-get($colors, colorGray--3);
+      }
+    }
+  }
+  .shared-board {
+    width: 370px;
+    height: auto;
+    max-height: 400px;
+    .select-board__popover-body {
+      position: relative;
+      padding: 4px 12px;
+      height: 100%;
+      min-height: 100%;
+      max-height: 400px;
+    }
+
+    .shared__section {
+      min-height: 150px;
+      &:nth-last-child(1) {
+        margin-bottom: 20px;
+      }
+      &-row {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .shared__icon {
+        width: 75px;
+        height: 75px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .shared__img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-bottom: 8px;
+
+        span {
+          text-align: center;
+          i {
+            font-size: 40px;
+          }
+        }
+      }
+      .shared__label {
+        text-align: center;
+        font-weight: map-get($text-weight, mediumWeight);
+        font-size: map-get($text-size, smallSize);
+        font-family: map-get($font-family, textFont);
+      }
+      .shared__title {
+        text-align: center;
+        font-weight: map-get($text-weight, ligherWeight);
+        font-size: map-get($text-size, mediumSize);
+        font-family: map-get($font-family, headingFont);
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .shared__divider {
+      margin: 4px 12px;
+      hr {
+        border-top: 1px solid #cdcdcd;
+      }
+    }
+  }
+}

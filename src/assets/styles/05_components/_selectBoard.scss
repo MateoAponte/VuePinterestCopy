@@ -1,0 +1,122 @@
+.select-board {
+  height: 500px;
+  width: 360px;
+  position: absolute;
+  &__popover {
+    height: 100%;
+    background-color: map-get($colors, colorWhite--1);
+    border-radius: 16px;
+    box-shadow: 0 0 8px map-get($colors, colorOverlay--1);
+    &-header {
+      .select-board__popover-section {
+        @include flexCentered();
+        height: 64px;
+        padding: 0px 16px;
+        font-size: map-get($text-size, bigSize);
+        font-family: map-get($font-family, headingFont);
+        font-weight: map-get($text-weight, bolderWeight);
+        color: map-get($colors, colorBlack--1);
+      }
+    }
+    &-input {
+      position: relative;
+      width: 100%;
+      height: 48px;
+      border: 2px solid map-get($colors, colorGray--2);
+      border-radius: 24px;
+      .searcher__icon {
+        left: 14px;
+      }
+    }
+    &-body {
+      max-height: 290px;
+      overflow: auto;
+    }
+    .popover-boards {
+      @include flexCentered(
+        $flex-direction: column,
+        $justify-content: flex-start
+      );
+    }
+    .popover-list {
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      &:not(:nth-child(1)) {
+        margin-top: 16px;
+      }
+      &__title {
+        width: 100%;
+        display: block;
+        font-weight: map-get($text-weight, mediumWeight);
+        font-size: map-get($text-size, smallSize);
+        font-family: map-get($font-family, textFont);
+        padding: 8px 16px;
+        margin: 4px 0px 0px;
+      }
+      .popover-item {
+        padding: 8px;
+        margin: 0px 8px;
+        cursor: pointer;
+        @include flexCentered($justify-content: flex-start);
+        &:hover {
+          background-color: map-get($colors, colorGray--1);
+          border-radius: 8px;
+          .popover-item__button {
+            display: block;
+          }
+        }
+        &__icon {
+          margin: 0px 8px 0px 0px;
+          img,
+          .popover-item__add {
+            height: 48px;
+            width: 48px;
+            border-radius: 8px;
+          }
+
+          .popover-item__add {
+            @include flexCentered();
+            font-size: 24px;
+            background-color: map-get($colors, colorGray--1);
+          }
+        }
+        &__row {
+          @include flexCentered($justify-content: space-between);
+          overflow: hidden;
+          width: 100%;
+          .popover-item__title {
+            font-size: map-get($text-size, bigSize);
+            font-weight: map-get($text-weight, bolderWeight);
+            font-family: map-get($font-family, headingFont);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 100%;
+          }
+          .popover-item__button {
+            display: none;
+            position: relative;
+            text-align: right;
+            width: 80%;
+          }
+        }
+      }
+    }
+    &-footer {
+      position: relative;
+      overflow: auto;
+      height: auto !important;
+      margin-top: 2px !important;
+      box-shadow: 0 0 8px map-get($colors, colorGray--1);
+      border-radius: 0px 0px 16px 16px;
+      .popover-item {
+        margin: 0px !important;
+        padding: 16px !important;
+        &:hover {
+          border-radius: 0px 8px 8px 0px;
+        }
+      }
+    }
+  }
+}
