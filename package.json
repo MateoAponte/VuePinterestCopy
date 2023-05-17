@@ -1,14 +1,14 @@
 {
-  "homepage": "https://mateoaponte.github.io/VuePinterestCopy",
+  "homepage": "https://mateoaponte.github.io/VuePinterestCopy/",
   "name": "vue-pinterest",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --skip-plugins @vue/eslint-config-typescript",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "public": "gh-pages -d build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
