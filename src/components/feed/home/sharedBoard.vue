@@ -59,7 +59,6 @@ import { SHARED_MEDIA } from "@/constants/feed/home/shared";
 import { FRIENDS } from "@/constants/back/friends";
 import { FriendsModel } from "@/definitions/feed/FriendsModel";
 import { SharedModel } from "@/definitions/feed/sharedModel";
-import { EventTargetExtend } from "@/definitions/feed/EventTarget";
 
 @Component({
 	name: "SelectBoard",
@@ -106,7 +105,7 @@ export default class MoreInfoBoard extends Vue {
 			const button = document.getElementById("shared-board-button");
 
 			// @ts-ignore
-			const targetClass = event.composedPath()?.find((eventElement: EventTargetExtend) => {
+			const targetClass = event.composedPath()?.find((eventElement: HTMLElement) => {
 				const arrayClasses = eventElement.className?.split(" ").indexOf("shared-board");
 				return arrayClasses !== -1 && arrayClasses !== undefined;
 			});
