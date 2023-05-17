@@ -67,10 +67,12 @@ export default class SharedBoard extends Vue {
 			const element = document.getElementById("more-info-board");
 			const button = document.getElementById("more-info-board-button");
 
+			// @ts-ignore
 			const targetClass = event.composedPath()?.find((eventElement: HTMLElement) => {
 				const arrayClasses = eventElement.className?.split(" ").indexOf("more-info-board");
 				return arrayClasses !== -1 && arrayClasses !== undefined;
 			});
+			// @ts-ignore
 			const includeInPath = event.composedPath()?.find((eventElement: HTMLElement) => {
 				return eventElement === element || eventElement === button;
 			});

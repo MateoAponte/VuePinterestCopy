@@ -1,5 +1,5 @@
 export type SharedModel = {
-	img: string;
+	icon: string;
 	label: string;
 	urlAction: string;
 };

@@ -57,7 +57,9 @@ import { events, popoverTypes } from "@/constants/feed/home/dictionary";
 
 import { SHARED_MEDIA } from "@/constants/feed/home/shared";
 import { FRIENDS } from "@/constants/back/friends";
+import { FriendsModel } from "@/definitions/feed/FriendsModel";
 import { SharedModel } from "@/definitions/feed/sharedModel";
+import { EventTargetExtend } from "@/definitions/feed/EventTarget";
 
 @Component({
 	name: "SelectBoard",
@@ -74,7 +76,7 @@ export default class MoreInfoBoard extends Vue {
 	firtsAttemp = true as boolean;
 	headerText = "Compartir" as string;
 	shared = Array<SharedModel>();
-	friends = Array<SharedModel>();
+	friends = Array<FriendsModel>();
 
 	@Prop() suggested_board!: string;
 	@Prop() position!: Position;
@@ -96,16 +98,19 @@ export default class MoreInfoBoard extends Vue {
 	}
 
 	mounted() {
+		/* eslint-disable */
 		this.shared.push(...SHARED_MEDIA);
 		this.friends.push(...FRIENDS);
 		document.addEventListener("click", (event: MouseEvent) => {
 			const element = document.getElementById("shared-board");
 			const button = document.getElementById("shared-board-button");
 
-			const targetClass = event.composedPath()?.find((eventElement: HTMLElement) => {
+			// @ts-ignore
+			const targetClass = event.composedPath()?.find((eventElement: EventTargetExtend) => {
 				const arrayClasses = eventElement.className?.split(" ").indexOf("shared-board");
 				return arrayClasses !== -1 && arrayClasses !== undefined;
 			});
+			// @ts-ignore
 			const includeInPath = event.composedPath()?.find((eventElement: HTMLElement) => {
 				return eventElement === element || eventElement === button;
 			});
