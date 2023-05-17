@@ -87,10 +87,12 @@ export default class SelectBoard extends Vue {
 		document.addEventListener("click", (event: MouseEvent) => {
 			const element = document.getElementById("shared-board");
 
+			// @ts-ignore
 			const targetClass = event.composedPath()?.find((eventElement: HTMLElement) => {
 				const arrayClasses = eventElement.className?.split(" ").indexOf("shared-board");
 				return arrayClasses !== -1 && arrayClasses !== undefined;
 			});
+			// @ts-ignore
 			const includeInPath = event.composedPath()?.find((eventElement: HTMLElement) => {
 				return eventElement === element;
 			});
@@ -112,12 +114,16 @@ export default class SelectBoard extends Vue {
 
 		document.addEventListener("click", (event: MouseEvent) => {
 			let targetClass;
+			// @ts-ignore
 			event.target?.className === "select-boards" && (targetClass = event.target?.className);
+			// @ts-ignore
 			event.target?.parentElement.className === "select-boards" &&
+				// @ts-ignore
 				(targetClass = event.target?.parentElement.className);
 
 			if (this.show && targetClass !== "select-boards") {
 				const element = document.getElementById("select-board");
+				// @ts-ignore
 				const includeInPath = event.composedPath()?.find((eventElement: HTMLElement) => {
 					return eventElement === element;
 				});

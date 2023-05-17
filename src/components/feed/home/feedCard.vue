@@ -136,6 +136,7 @@ export default class FeedCard extends Vue {
 		document.addEventListener("click", (event: MouseEvent) => {
 			const element = document.querySelectorAll(".feed-card")[this.index];
 
+			// @ts-ignore
 			const includeInPath = event.composedPath()?.find((eventElement: HTMLElement) => {
 				return eventElement === element;
 			});

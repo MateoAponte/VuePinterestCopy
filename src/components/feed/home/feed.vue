@@ -94,6 +94,7 @@ export default class Feed extends Vue {
 		this.$store.dispatch(FeedActionsType.FETCH_FEED, this.paginationData);
 		document.addEventListener("scroll", () => {
 			const feedContainer = document.querySelector(".feed") || Element;
+			// @ts-ignore
 			const feedHeight = feedContainer.offsetHeight;
 			const distanceTop = window.innerHeight + window.pageYOffset;
 			if (distanceTop >= feedHeight - 300) {

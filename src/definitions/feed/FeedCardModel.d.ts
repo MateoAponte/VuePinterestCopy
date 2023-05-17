@@ -3,11 +3,6 @@ type User = {
 	name: string;
 };
 
-type Reaction = {
-	userOrigin: string;
-	typeReaction: ReactionType;
-};
-
 type ImageData = {
 	previewWidth: number;
 	previewHeight: number;

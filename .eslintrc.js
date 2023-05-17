@@ -15,13 +15,13 @@ module.exports = {
 	extends: [
 		"eslint:recommended",
 		"plugin:vue/recommended",
-		"plugin:@typescript-eslint/recommended",
 		"plugin:prettier/recommended",
 		"prettier",
 	],
 	rules: {
-		"no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-		"no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+		"no-console": "off",
+		"no-debugger": "off",
+		"no-unused-vars": "off",
 		"@typescript-eslint/explicit-module-boundary-types": "off",
 		indent: [2, "tab"],
 	},

@@ -12,7 +12,7 @@ function getElementById(id: string) {
 
 export async function recalculateSelectBoard(value: Position, father: string, elements: string) {
 	const selectBoard = document.querySelectorAll<HTMLElement>(elements)[0];
-	const element = await getElementById(father);
+	const element = (await getElementById(father)) as HTMLElement;
 
 	const height = element?.offsetHeight || 0;
 	const width = element?.offsetWidth || 0;
@@ -58,7 +58,7 @@ export async function recalculate(
 	type: popoverTypes,
 ) {
 	const selectBoard = document.querySelectorAll<HTMLElement>(elements)[0];
-	const element = await getElementById(father);
+	const element = (await getElementById(father)) as HTMLElement;
 
 	// Height and Width of the relative component
 	const height = element?.offsetHeight || 0;
