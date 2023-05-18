@@ -27,6 +27,7 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@types/node-sass": "^4.11.3",
     "@typescript-eslint/eslint-plugin": "4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -35,7 +36,6 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-airbnb": "^5.0.2",
-    "dart-sass": "^1.25.0",
     "eslint": "7.28.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prettier": "^3.4.0",
